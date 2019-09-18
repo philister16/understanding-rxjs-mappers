@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="concat">Send request with concatMap</button>
+    <p>Observe the console! It will wait for request (aka observable) to complete before subscribing to the next one. So if I hit the button multiple times, it will still wait to start the next request.</p>
+
+    <button id="merge">Send request with mergeMap</button>
+    <p>Observe the console! It won't wait for requests to complete and simultaenously subscribes to concurrently. So if I hit the button multiple times it will not wait and immediately start a new request.</p>
+
+    <button id="switch">Switch counting style</button>
+    <button id="merge2">Merge counting style</button>
+    <p>Observe the console! While switch map starts the counting to 10 and by clicking again "switches" to the count to hundred observable. It does so by unsubscribing to the open count to ten obs. So whenever clicked it unsubscribes from an open obs and subscribes to a new one. To drive the point home, a second example with merge map, whereas merge map just keeps on starting new subscriptions without unsubscribing from old ones. So we had the counters run in parallel.</p>
+
+    <button id="exhaust">Start counter (exhaust)</button>
+    <button id="merge3">Start counters (merge)</button>
+    <p>Observe the console! While clicking "start counter (exhaust)" only starts a new counter when the ongoing counter has finished (using exhaustMap), the "Start counters (merge)" starts multiple counters at the same time wihtout waiting for an ongoing counter to complete.</p>
+    <script src="bundle.js"></script>
+</body>
+</html>
